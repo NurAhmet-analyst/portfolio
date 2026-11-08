@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nur Ahmet – Exploartion through Data</title>
+<meta name="A Data Scientist portfolio" content="Data Scientist.">
+<style>
+/* =========================================================
+   STYLES (edit colors in :root; everything is in this file)
+   ========================================================= */
+:root{
+  --bg:#fff; --tile:#f5f5f7; --ink:#1d1d1f; --muted:#6e6e73;
+  --blue:#0071e3; --link:#0066cc; --black:#000;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --nav:3rem; --wrap:75rem; --gap:.75rem;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+  font-size:1.0625rem;line-height:1.47;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:.4rem}
+
+/* ---- Navigation ---- */
+.nav{position:sticky;top:0;z-index:10;height:var(--nav);
+  background:rgba(251,251,253,.8);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.08)}
+.nav-inner{max-width:64rem;height:100%;margin:auto;padding-inline:1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+.brand{font-weight:600;font-size:1rem}
+.nav-links{display:flex;align-items:center;gap:1.75rem;font-size:.75rem}
+.nav-links a{opacity:.8;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-links .pill{background:var(--blue);color:#fff;opacity:1;padding:.3rem .8rem;border-radius:999px}
+.nav-links .pill:hover{background:#0077ed}
+
+/* ---- Hero ---- */
+.hero{min-height:calc(100svh - var(--nav));display:grid;place-content:center;text-align:center;padding:4rem 1.25rem 6rem}
+.hero h1{font-size:clamp(2.75rem,9vw,6rem);font-weight:700;line-height:1.04;letter-spacing:-.04em;max-width:14ch;margin-inline:auto}
+.hero .sub{margin:1.5rem auto 0;max-width:34rem;font-size:clamp(1.25rem,2.6vw,1.75rem);line-height:1.25;color:var(--muted);letter-spacing:-.015em}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1rem 2rem;margin-top:2rem}
+.btn{background:var(--blue);color:#fff;padding:.75rem 1.5rem;border-radius:999px;font-size:1.0625rem;transition:background .2s}
+.btn:hover{background:#0077ed}
+.more{color:var(--link);font-size:1.0625rem}
+.more::after{content:" ›"}
+.more:hover{text-decoration:underline}
+
+/* ---- Work tiles ---- */
+.work{max-width:var(--wrap);margin:0 auto;padding:0 var(--gap) var(--gap);display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.tile{background:var(--tile);border-radius:1.75rem;text-align:center;padding:3rem 1.5rem 0;overflow:hidden;display:flex;flex-direction:column}
+.tile.wide{grid-column:1/-1}
+.tile.dark{background:var(--black);color:#f5f5f7}
+.tile .eyebrow{font-size:.875rem;font-weight:600;color:var(--muted)}
+.tile.dark .eyebrow{color:#a1a1a6}
+.tile h2{font-size:clamp(1.75rem,4vw,3rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;margin-top:.35rem}
+.tile .desc{max-width:30rem;margin:.75rem auto 0;font-size:1.125rem;line-height:1.3;color:var(--muted)}
+.tile.dark .desc{color:#a1a1a6}
+.tile .actions{margin-top:1.25rem;gap:.5rem 1.5rem}
+.tile.dark .more{color:#2997ff}
+
+/* Illustrations are inline SVG. To use a photo instead, replace the <svg> with an <img> (see README) */
+.visual{margin-top:2rem;padding-bottom:2rem;display:flex;justify-content:center}
+.visual svg,.visual img{width:min(100%,56rem);height:auto;display:block}
+.visual img{border-radius:1rem}
+.tile .desc,.tile .eyebrow{color:#515154}
+.tile.dark .desc,.tile.dark .eyebrow{color:#a9b4e8}
+@keyframes dash{to{stroke-dashoffset:-14}}
+@keyframes pulse{50%{opacity:.2}}
+.flow{stroke-dasharray:6 8;animation:dash 1s linear infinite}
+.pulse{animation:pulse 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:0}}.blink{animation:blink 1s steps(1) infinite}
+@keyframes ch{0%{fill-opacity:0}1.5%,90%{fill-opacity:1}100%{fill-opacity:0}}.ch{animation:ch 9s ease-in-out infinite both}
+/* Resume assistant (8s) */
+@keyframes rq{0%,4%{opacity:0;transform:translateY(8px)}10%,92%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes rh{0%,14%{opacity:0}20%,92%{opacity:1}100%{opacity:0}}
+@keyframes rg{0%,28%{opacity:0}34%,58%{opacity:1}66%,100%{opacity:0}}
+@keyframes ra1{0%,56%{opacity:0;transform:translateX(-8px)}62%,92%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes ra2{0%,62%{opacity:0;transform:translateX(-8px)}68%,92%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes ra3{0%,68%{opacity:0;transform:translateX(-8px)}74%,92%{opacity:1;transform:none}100%{opacity:0}}
+.rq,.rh,.rg,.ra1,.ra2,.ra3{animation:8s ease-in-out infinite both}
+.rq{animation-name:rq}.rh{animation-name:rh}.rg{animation-name:rg}.ra1{animation-name:ra1}.ra2{animation-name:ra2}.ra3{animation-name:ra3}
+/* Earthquake detection (6s) */
+@keyframes tr{0%{stroke-dashoffset:1}75%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes eqa{0%,38%{opacity:0}44%,80%{opacity:1}90%,100%{opacity:0}}
+@keyframes rip1{0%,38%{opacity:0;transform:scale(1)}40%{opacity:.5}58%,100%{opacity:0;transform:scale(2.2)}}
+@keyframes rip2{0%,46%{opacity:0;transform:scale(1)}48%{opacity:.4}66%,100%{opacity:0;transform:scale(2.2)}}
+.tr{stroke-dasharray:1;animation:tr 6s linear infinite both}.eqa{animation:eqa 6s ease-in-out infinite both}
+.rip{transform-box:fill-box;transform-origin:center;vector-effect:non-scaling-stroke}
+.r1{animation:rip1 6s ease-out infinite both}.r2{animation:rip2 6s ease-out infinite both}
+/* Taxonomy classifier (6s) */
+@keyframes td1{0%{stroke-dashoffset:1}22%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes td2{0%,22%{stroke-dashoffset:1}46%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes tn1{0%,20%{opacity:0}26%,92%{opacity:1}100%{opacity:0}}
+@keyframes tn2{0%,44%{opacity:0}50%,92%{opacity:1}100%{opacity:0}}
+@keyframes tn3{0%,52%{opacity:0}58%,92%{opacity:1}100%{opacity:0}}
+.td1,.td2{stroke-dasharray:1}.td1{animation:td1 6s ease-in-out infinite both}.td2{animation:td2 6s ease-in-out infinite both}
+.tn1{animation:tn1 6s ease-in-out infinite both}.tn2{animation:tn2 6s ease-in-out infinite both}.tn3{animation:tn3 6s ease-in-out infinite both}
+/* Etymology finder (9s) */
+@keyframes e1{0%,14%{opacity:0;transform:translateY(10px)}20%,92%{opacity:1;transform:none}100%{opacity:0}}.e1{animation:e1 9s ease-in-out infinite both}@keyframes e2{0%,26%{opacity:0;transform:translateY(10px)}32%,92%{opacity:1;transform:none}100%{opacity:0}}.e2{animation:e2 9s ease-in-out infinite both}@keyframes e3{0%,38%{opacity:0;transform:translateY(10px)}44%,92%{opacity:1;transform:none}100%{opacity:0}}.e3{animation:e3 9s ease-in-out infinite both}@keyframes e4{0%,50%{opacity:0;transform:translateY(10px)}56%,92%{opacity:1;transform:none}100%{opacity:0}}.e4{animation:e4 9s ease-in-out infinite both}@keyframes f1{0%,20%{stroke-dashoffset:1}26%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}.f1{stroke-dasharray:1;animation:f1 9s ease-in-out infinite both}@keyframes f2{0%,32%{stroke-dashoffset:1}38%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}.f2{stroke-dasharray:1;animation:f2 9s ease-in-out infinite both}@keyframes f3{0%,44%{stroke-dashoffset:1}50%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}.f3{stroke-dasharray:1;animation:f3 9s ease-in-out infinite both}
+
+/* ---- Statement (text fills in as you scroll) ---- */
+.statement{background:var(--black);margin:var(--gap) 0;padding:clamp(5rem,14vw,10rem) 1.25rem}
+.statement p{max-width:60rem;margin:auto;font-size:clamp(1.75rem,5vw,3.5rem);font-weight:700;line-height:1.12;letter-spacing:-.03em;
+  /* 3x tall gradient: top third is bright, bottom third is dim. Default view = bright (no animation support) */
+  background:linear-gradient(to bottom,#f5f5f7 0 35%,#515154 65% 100%) 0 0/100% 300% no-repeat;
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* ---- Services ---- */
+.section{max-width:var(--wrap);margin:auto;padding:clamp(4rem,9vw,7rem) 1.25rem;text-align:center}
+.section > h2{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;letter-spacing:-.035em;line-height:1.08}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:3rem 2.5rem;margin-top:3.5rem}
+.services h3{font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.services p{margin:.6rem auto 0;max-width:20rem;color:var(--muted)}
+
+/* ---- Tools ---- */
+.tools{list-style:none;margin:2.5rem 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
+.tools li{background:var(--tile);padding:.6rem 1.4rem;border-radius:999px;font-weight:500}
+
+/* ---- Contact ---- */
+.contact{background:var(--tile);max-width:none}
+.contact .email{display:inline-block;margin-top:1.5rem;font-size:clamp(1.25rem,4vw,2rem);font-weight:600;color:var(--link);overflow-wrap:anywhere}
+.contact .email:hover{text-decoration:underline}
+.contact .links{display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem 1.75rem;margin-top:1.5rem}
+
+/* ---- Footer ---- */
+footer{background:var(--tile);border-top:1px solid #d2d2d7;padding:1.25rem;font-size:.75rem;color:var(--muted)}
+footer div{max-width:var(--wrap);margin:auto;display:flex;justify-content:space-between;gap:1rem}
+
+/* =========================================================
+   ANIMATION
+   1) Page-load: hero text rises in, one after another
+   2) Scroll-driven (Chrome, Edge, Safari 26+): hero fades away,
+      tiles scale in, screens drift, statement text fills in
+   Browsers without scroll-driven support just show everything.
+   ========================================================= */
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.hero h1,.hero .sub,.hero .actions{animation:rise 1s cubic-bezier(.16,1,.3,1) both}
+.hero .sub{animation-delay:.15s}
+.hero .actions{animation-delay:.3s}
+
+@supports (animation-timeline:view()){
+  @keyframes away{to{opacity:0;transform:scale(.9) translateY(-40px)}}
+  @keyframes pop{from{opacity:0;transform:translateY(60px) scale(.94)}to{opacity:1;transform:none}}
+  @keyframes drift{from{transform:translateY(60px)}to{transform:translateY(-10px)}}
+  @keyframes fill{from{background-position:0 100%}to{background-position:0 0}}
+  @keyframes fade{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+
+  .hero > *{animation:rise 1s cubic-bezier(.16,1,.3,1) both,away linear both;animation-timeline:auto,scroll(root);animation-range:normal,0 70svh}
+  .hero .sub{animation-delay:.15s,0s}
+  .hero .actions{animation-delay:.3s,0s}
+  .tile{animation:pop linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+  .visual svg,.visual img{animation:drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  .statement p{animation:fill linear both;animation-timeline:view();animation-range:entry 100% cover 58%}
+  .services > div,.tools,.contact > *{animation:fade linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .statement p{background-position:0 0;-webkit-text-fill-color:#f5f5f7;color:#f5f5f7}
+}
+
+@media (max-width:48rem){
+  .work{grid-template-columns:1fr}
+  .nav-links a:not(.pill){display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">Nur Ahmet</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#tools">Tools</a>
+      <a class="pill" href="#contact">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO: one sentence on what you do -->
+  <section class="hero">
+    <h1>Finding reasons with Data.</h1>
+    <p class="sub">Analysing Data and building Models to solve Problems.</p>
+    <div class="actions">
+      <a class="btn" href="#contact">Start a project</a>
+      <a class="more" href="#work">See my work</a>
+    </div>
+  </section>
+
+  <!-- WORK: copy one <article> to add a project. Add class "wide" to span the full width, "dark" for black. -->
+  <section id="work" class="work" aria-label="Selected work">
+
+    <article class="tile wide dark" style="background:radial-gradient(ellipse at 50% 100%,#13306b 0,#050a1a 75%)">
+      <p class="eyebrow">LLM and RAG · Runs locally</p>
+      <h2>Resume Assistant</h2>
+      <p class="desc">A RAG pipeline that connects you to a local LLM. It reads your resume, analyses it, and answers your questions about it.</p>
+      <div class="actions"><a class="more" href="https://github.com/NurAhmet-analyst">View project</a></div>
+      <div class="visual"><svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A resume is indexed, the relevant passages are retrieved, a local LLM reads them, and the answer appears in a chat.">
+<defs><marker id="m1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8e8e93"/></marker></defs>
+<rect x="50" y="50" width="150" height="220" rx="16" fill="#1c1c1e" stroke="#3a3a3c"/>
+<circle cx="78" cy="82" r="13" fill="#3a3a3c"/><path d="M100 76h64" stroke="#f5f5f7" stroke-width="6" stroke-linecap="round"/><path d="M100 90h40" stroke="#636366" stroke-width="5" stroke-linecap="round"/>
+<g stroke="#8e8e93" stroke-width="5" stroke-linecap="round"><path d="M68 112h40M68 176h52"/></g>
+<g stroke="#48484a" stroke-width="5" stroke-linecap="round"><path d="M68 128h110M68 144h96M68 160h104M68 192h100M68 208h112M68 224h84M68 240h104"/></g>
+<g class="rh" stroke="#2997ff" stroke-width="5" stroke-linecap="round"><path d="M68 144h96M68 208h112"/></g>
+<g fill="none" stroke="#636366" stroke-width="2" marker-end="url(#m1)"><path class="flow" d="M212 160H256"/><path class="flow" d="M386 160H428"/><path class="flow" d="M560 160H606"/></g>
+<rect x="262" y="105" width="118" height="110" rx="18" fill="#1c1c1e" stroke="#3a3a3c"/>
+<g fill="#48484a"><circle cx="286" cy="130" r="3.5"/><circle cx="309" cy="130" r="3.5"/><circle cx="332" cy="130" r="3.5"/><circle cx="355" cy="130" r="3.5"/><circle cx="286" cy="153" r="3.5"/><circle cx="309" cy="153" r="3.5"/><circle cx="332" cy="153" r="3.5"/><circle cx="355" cy="153" r="3.5"/><circle cx="286" cy="176" r="3.5"/><circle cx="309" cy="176" r="3.5"/><circle cx="332" cy="176" r="3.5"/><circle cx="355" cy="176" r="3.5"/><circle cx="286" cy="199" r="3.5"/><circle cx="309" cy="199" r="3.5"/><circle cx="332" cy="199" r="3.5"/><circle cx="355" cy="199" r="3.5"/></g>
+<g class="rh" fill="#2997ff"><circle cx="309" cy="153" r="4.5"/><circle cx="332" cy="153" r="4.5"/><circle cx="332" cy="176" r="4.5"/></g>
+<rect class="rg" x="440" y="106" width="108" height="108" rx="26" fill="none" stroke="#2997ff" stroke-width="2.5"/>
+<g stroke="#636366" stroke-width="3" stroke-linecap="round"><path d="M468 102v8M494 102v8M520 102v8M468 210v8M494 210v8M520 210v8M440 134h8M440 160h8M440 186h8M540 134h8M540 160h8M540 186h8"/></g>
+<rect x="446" y="112" width="96" height="96" rx="22" fill="#1c1c1e" stroke="#48484a"/>
+<text x="494" y="167" text-anchor="middle" font-size="24" font-weight="600" fill="#f5f5f7">LLM</text><text x="494" y="187" text-anchor="middle" font-size="11" fill="#8e8e93">on-device</text>
+<rect x="612" y="50" width="238" height="220" rx="22" fill="#1c1c1e" stroke="#3a3a3c"/><text x="632" y="78" font-size="12" font-weight="600" fill="#8e8e93">Resume assistant</text><path d="M612 92H850" stroke="#2c2c2e"/>
+<g class="rq"><rect x="672" y="106" width="164" height="40" rx="18" fill="#2997ff"/><text x="686" y="130" font-size="12" fill="#fff">What are my top skills?</text></g>
+<rect x="626" y="162" width="190" height="88" rx="18" fill="#2c2c2e"/>
+<g fill="#aeaeb2"><rect class="ra1" x="642" y="178" width="150" height="7" rx="3.5"/><rect class="ra2" x="642" y="196" width="158" height="7" rx="3.5"/><rect class="ra3" x="642" y="214" width="104" height="7" rx="3.5"/></g>
+<g fill="#8e8e93" font-size="13" text-anchor="middle"><text x="125" y="300">Your resume</text><text x="321" y="300">Vector index</text><text x="494" y="300">Local LLM</text><text x="731" y="300">Analysis and answers</text></g></svg></div>
+    </article>
+
+    <article class="tile">
+      <p class="eyebrow">Arduino</p>
+      <h2>Earthquake Detection</h2>
+      <p class="desc">An Arduino and motion sensor that detects ground tremors and raises an alert.</p>
+      <div class="actions"><a class="more" href="https://github.com/NurAhmet-analyst">View project</a></div>
+      <div class="visual"><svg viewBox="0 0 560 336" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An Arduino with an accelerometer detects ground motion and raises a tremor alert when the signal spikes.">
+<rect x="20" y="16" width="520" height="176" rx="22" fill="#fff" stroke="#e5e5ea"/><text x="44" y="46" font-size="12" font-weight="600" fill="#8e8e93">Ground motion</text>
+<g class="eqa"><rect x="388" y="28" width="132" height="26" rx="13" fill="#1d1d1f"/><circle cx="404" cy="41" r="4" fill="#ff453a"/><text x="416" y="45" font-size="11.5" font-weight="500" fill="#fff">Tremor detected</text></g>
+<path d="M36 116H524" stroke="#e5e5ea" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path class="tr" pathLength="1" d="M36 120.5L42 114.8L48 113.7L54 114.7L60 112.5L66 117.4L72 120.0L78 116.7L84 117.8L90 114.6L96 111.2L102 115.8L108 116.3L114 117.2L120 120.8L126 115.9L132 113.5L138 115.0L144 112.3L150 116.2L156 120.1L162 117.0L168 117.8L174 115.7L180 111.1L186 115.0L192 116.4L198 116.5L204 120.7L210 117.1L216 113.5L222 115.1L228 112.5L234 114.9L240 120.0L246 117.4L252 117.7L258 116.8L264 111.3L270 114.1L276 130.6L282 122.4L288 94.6L294 101.7L300 137.9L306 139.3L312 95.8L318 86.2L324 127.9L330 145.3L336 117.3L342 93.1L348 105.5L354 133.3L360 127.4L366 100.5L372 105.9L378 128.8L384 128.8L390 110.7L396 99.2L402 112.9L408 131.4L414 121.6L420 107.1L426 112.9L432 120.3L438 119.3L444 111.3L450 107.8L456 121.2L462 127.2L468 114.6L474 108.8L480 112.4L486 117.2L492 120.7L498 115.0L504 113.7L510 121.2L516 117.5L522 110.7" fill="none" stroke="#1d1d1f" stroke-width="2.5" stroke-linejoin="round"/>
+<path class="flow" d="M424 242V198" stroke="#0071e3" stroke-width="2" fill="none"/>
+<circle class="rip r1" cx="424" cy="268" r="20" fill="none" stroke="#0071e3" stroke-width="2"/><circle class="rip r2" cx="424" cy="268" r="20" fill="none" stroke="#0071e3" stroke-width="2"/>
+<rect x="114" y="246" width="24" height="36" rx="5" fill="#8e8e93"/><rect x="130" y="224" width="230" height="80" rx="14" fill="#1d1d1f"/><rect x="222" y="246" width="64" height="34" rx="5" fill="#3a3a3c"/>
+<path d="M150 232H340M150 296H340" stroke="#636366" stroke-width="4" stroke-dasharray="3 7"/><circle cx="332" cy="264" r="5" fill="#48484a"/>
+<g class="eqa"><circle cx="332" cy="264" r="11" fill="#ff453a" opacity=".28"/><circle cx="332" cy="264" r="5" fill="#ff453a"/></g>
+<path d="M360 268H392" stroke="#8e8e93" stroke-width="3" stroke-linecap="round"/><rect x="392" y="246" width="64" height="44" rx="8" fill="#0071e3"/><rect x="412" y="258" width="22" height="20" rx="4" fill="#fff" opacity=".92"/>
+<g fill="#6e6e73" font-size="12" text-anchor="middle"><text x="245" y="324">Arduino</text><text x="424" y="324">Accelerometer</text></g></svg></div>
+    </article>
+
+    <article class="tile">
+      <p class="eyebrow">Classical Programming</p>
+      <h2>Taxonomy Classifier</h2>
+      <p class="desc">A classification system that sorts items down a taxonomy, from broad category to specific class.</p>
+      <div class="actions"><a class="more" href="https://github.com/NurAhmet-analyst">View project</a></div>
+      <div class="visual"><svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A taxonomy tree: an input is sorted into a category, then into a specific class, with a confidence score."><path d="M280 56C280 84 100 80 100 108M280 56C280 84 280 80 280 108M280 56C280 84 460 80 460 108M100 142C100 172 60 176 60 206M100 142C100 172 140 176 140 206M280 142C280 172 240 176 240 206M280 142C280 172 320 176 320 206M460 142C460 172 420 176 420 206M460 142C460 172 500 176 500 206" fill="none" stroke="#d2d2d7" stroke-width="1.5"/><path class="td1" pathLength="1" d="M280 56V108" fill="none" stroke="#0071e3" stroke-width="2.5"/><path class="td2" pathLength="1" d="M280 142C280 172 320 176 320 206" fill="none" stroke="#0071e3" stroke-width="2.5"/><g class=""><rect x="230" y="22" width="100" height="34" rx="17" fill="#1d1d1f" stroke="#1d1d1f"/><text x="280" y="44" text-anchor="middle" font-size="13" font-weight="500" fill="#fff">Input</text></g><g class=""><rect x="44" y="108" width="112" height="34" rx="17" fill="#fff" stroke="#d2d2d7"/><text x="100" y="130" text-anchor="middle" font-size="13" font-weight="500" fill="#1d1d1f">Category A</text></g><g class=""><rect x="224" y="108" width="112" height="34" rx="17" fill="#fff" stroke="#d2d2d7"/><text x="280" y="130" text-anchor="middle" font-size="13" font-weight="500" fill="#1d1d1f">Category B</text></g><g class=""><rect x="404" y="108" width="112" height="34" rx="17" fill="#fff" stroke="#d2d2d7"/><text x="460" y="130" text-anchor="middle" font-size="13" font-weight="500" fill="#1d1d1f">Category C</text></g><g class=""><rect x="26" y="206" width="68" height="32" rx="17" fill="#fff" stroke="#d2d2d7"/><text x="60" y="227" text-anchor="middle" font-size="12" font-weight="500" fill="#1d1d1f">Class A1</text></g><g class=""><rect x="106" y="206" width="68" height="32" rx="17" fill="#fff" stroke="#d2d2d7"/><text x="140" y="227" text-anchor="middle" font-size="12" font-weight="500" fill="#1d1d1f">Class A2</text></g><g class=""><rect x="206" y="206" width="68" height="32" rx="17" fill="#fff" stroke="#d2d2d7"/><text x="240" y="227" text-anchor="middle" font-size="12" font-weight="500" fill="#1d1d1f">Class B1</text></g><g class=""><rect x="286" y="206" width="68" height="32" rx="17" fill="#fff" stroke="#d2d2d7"/><text x="320" y="227" text-anchor="middle" font-size="12" font-weight="500" fill="#1d1d1f">Class B2</text></g><g class=""><rect x="386" y="206" width="68" height="32" rx="17" fill="#fff" stroke="#d2d2d7"/><text x="420" y="227" text-anchor="middle" font-size="12" font-weight="500" fill="#1d1d1f">Class C1</text></g><g class=""><rect x="466" y="206" width="68" height="32" rx="17" fill="#fff" stroke="#d2d2d7"/><text x="500" y="227" text-anchor="middle" font-size="12" font-weight="500" fill="#1d1d1f">Class C2</text></g><g class="tn1"><rect x="224" y="108" width="112" height="34" rx="17" fill="#0071e3" stroke="#0071e3"/><text x="280" y="130" text-anchor="middle" font-size="13" font-weight="500" fill="#fff">Category B</text></g><g class="tn2"><rect x="286" y="206" width="68" height="32" rx="17" fill="#0071e3" stroke="#0071e3"/><text x="320" y="227" text-anchor="middle" font-size="12" font-weight="500" fill="#fff">Class B2</text></g><g class="tn3"><rect x="262" y="252" width="116" height="28" rx="14" fill="#fff" stroke="#0071e3"/><text x="320" y="271" text-anchor="middle" font-size="12" font-weight="600" fill="#0071e3">Class B2 · 97%</text></g></svg></div>
+    </article>
+
+    <article class="tile wide">
+      <p class="eyebrow">Current project · In development</p>
+      <h2>Etymology Finder</h2>
+      <p class="desc">An AI-powered search that traces a word back through the languages it came from.</p>
+      <div class="actions"><a class="more" href="https://github.com/NurAhmet-analyst">View project</a></div>
+      <div class="visual"><svg viewBox="0 0 900 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A search for the word salary, traced back through Old French and Latin to the Latin root sal, meaning salt."><rect x="250" y="20" width="400" height="52" rx="26" fill="#fff" stroke="#d2d2d7"/><circle cx="282" cy="45" r="8.5" fill="none" stroke="#6e6e73" stroke-width="2.5"/><path d="M288.5 51.5l7 7" stroke="#6e6e73" stroke-width="2.5" stroke-linecap="round"/><text x="312" y="54" font-size="22" fill="#1d1d1f"><tspan class="ch" style="animation-delay:0.30s">s</tspan><tspan class="ch" style="animation-delay:0.42s">a</tspan><tspan class="ch" style="animation-delay:0.54s">l</tspan><tspan class="ch" style="animation-delay:0.66s">a</tspan><tspan class="ch" style="animation-delay:0.78s">r</tspan><tspan class="ch" style="animation-delay:0.90s">y</tspan></text><rect class="blink" x="384" y="36" width="2" height="26" rx="1" fill="#0071e3"/><rect x="538" y="32" width="98" height="28" rx="14" fill="#0071e3"/><circle class="pulse" cx="554" cy="46" r="3.5" fill="#fff"/><text x="566" y="50.5" font-size="12" font-weight="600" fill="#fff">AI search</text><g class="e1"><rect x="35" y="124" width="170" height="104" rx="22" fill="#fff" stroke="#d2d2d7" stroke-width="1"/><text x="59" y="156" font-size="12" fill="#6e6e73">English</text><text x="59" y="194" font-size="28" font-weight="600" fill="#1d1d1f">salary</text></g><g class="e2"><rect x="255" y="124" width="170" height="104" rx="22" fill="#fff" stroke="#d2d2d7" stroke-width="1"/><text x="279" y="156" font-size="12" fill="#6e6e73">Old French</text><text x="279" y="194" font-size="28" font-weight="600" fill="#1d1d1f">salarie</text></g><g class="e3"><rect x="475" y="124" width="170" height="104" rx="22" fill="#fff" stroke="#d2d2d7" stroke-width="1"/><text x="499" y="156" font-size="12" fill="#6e6e73">Latin</text><text x="499" y="194" font-size="28" font-weight="600" fill="#1d1d1f">salarium</text></g><g class="e4"><rect x="695" y="124" width="170" height="104" rx="22" fill="#fff" stroke="#0071e3" stroke-width="2"/><text x="719" y="156" font-size="12" fill="#6e6e73">Latin</text><text x="719" y="194" font-size="28" font-weight="600" fill="#0071e3">sal</text><text x="719" y="216" font-size="12" fill="#6e6e73">means “salt”</text></g><path class="f1" pathLength="1" d="M213 176H247" fill="none" stroke="#8e8e93" stroke-width="2"/><path class="e2" d="M243 170l6 6-6 6" fill="none" stroke="#8e8e93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path class="f2" pathLength="1" d="M433 176H467" fill="none" stroke="#8e8e93" stroke-width="2"/><path class="e3" d="M463 170l6 6-6 6" fill="none" stroke="#8e8e93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path class="f3" pathLength="1" d="M653 176H687" fill="none" stroke="#8e8e93" stroke-width="2"/><path class="e4" d="M683 170l6 6-6 6" fill="none" stroke="#8e8e93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </article>
+
+  </section>
+
+  <!-- STATEMENT: text fills in as you scroll -->
+  <section class="statement">
+    <p>Every project starts with a problem. It needs to be turned into a working system that shall be tested, documented, and ready to use.</p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <h2>What I do for clients.</h2>
+    <div class="services">
+      <div><h3>Python Applications</h3><p>Creating python based applications .</p></div>
+      <div><h3>Data Analysis</h3><p>Cleaning,Organizing and Finding patterns in data.</p></div>
+      <div><h3>Building Models</h3><p>Models that analyse and automate.</p></div>
+    </div>
+  </section>
+
+  <!-- TOOLS: add or remove <li> -->
+  <section id="tools" class="section" style="padding-top:0">
+    <h2>Tools & Languages.</h2>
+    <ul class="tools">
+      <li>C++</li><li>Python</li><li>SQL</li><li>Numpy&Pandas</li><li>Git</li><li>Seaborn</li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <h2>Collaboration?</h2>
+    <a class="email" href="mailto:noahromad@gmail.com">noahromad@gmail.com</a>
+    <p class="links">
+      <a class="more" href="https://github.com/NurAhmet-analyst">GitHub</a>
+      <a class="more" href="https://www.linkedin.com/in/nur-ahmad-81231141a/">LinkedIn</a>
+      <!-- <a class="more" href="https://example.com/resume.pdf">Resume</a> -->
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div><span>© 2026 Nur Ahmet</span><a href="#top">Back to top</a></div>
+</footer>
+
+</body>
+</html>
